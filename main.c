@@ -55,6 +55,11 @@ int main(int argc, char *argv[])
 {
     struct uinput_user_dev uud;
 
+    if (argc < 3) {
+        fprintf(stderr, "Usage: ./penetrator keyboard <string>\n");
+        return -1;
+    }
+
     int fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
 
     if (fd == -1) {
@@ -88,7 +93,7 @@ int main(int argc, char *argv[])
 
     sleep(1);
 
-    emit_string(fd, "hello");
+    emit_string(fd, argv[2]);
 
     sleep(1);
 
