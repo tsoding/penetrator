@@ -2,17 +2,17 @@
 #define KEYBOARD_HPP_
 
 #include <string>
+#include "uinput.hpp"
 
 class Keyboard
 {
 public:
     Keyboard();
-    ~Keyboard();
 
     void injectString(const std::string &s);
 
 private:
-    int fd;
+    UInput uinputDevice;
 };
 
 #endif  // KEYBOARD_HPP_
