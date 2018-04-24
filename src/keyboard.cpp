@@ -35,7 +35,7 @@ Keyboard::Keyboard():
             {UI_SET_EVBIT, {EV_KEY}},
             {UI_SET_KEYBIT, keyboard_letters}
         },
-        Uud("Penetrator Device"))
+        Uud("Penetrator Keyboard"))
 {}
 
 void Keyboard::injectString(const std::string &str)
