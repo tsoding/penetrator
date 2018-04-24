@@ -5,6 +5,7 @@
 #include <linux/uinput.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdexcept>
 
 #include "./keyboard.hpp"
 
@@ -51,32 +52,27 @@ Keyboard::Keyboard():
     fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
 
     if (fd == -1) {
-        perror("Could not open /dev/uinput");
-        exit(1);
+        throw std::runtime_error("Could not open /dev/uinput");
     }
 
     if (ioctl(fd, UI_SET_EVBIT, EV_KEY) == -1) {
-        perror("Could not enable EV_KEY");
-        exit(1);
+        throw std::runtime_error("Could not enable EV_KEY");
     }
 
     for (size_t i = 0; i < keyboard_letters_size; ++i) {
         if (ioctl(fd, UI_SET_KEYBIT, keyboard_letters[i]) == -1) {
-            perror("Could not enable keys");
-            exit(1);
+            throw std::runtime_error("Could not enable keys");
         }
     }
 
     memset(&uud, 0, sizeof(uud));
     snprintf(uud.name, UINPUT_MAX_NAME_SIZE, "Penetrator Device");
     if (write(fd, &uud, sizeof(uud)) < 0) {
-        perror("Could not write to /dev/uinput");
-        exit(1);
+        throw std::runtime_error("Could not write to /dev/uinput");
     }
 
     if (ioctl(fd, UI_DEV_CREATE) < 0) {
-        perror("Could not create the Penetrator device");
-        exit(1);
+        throw std::runtime_error("Could not create the Penetrator device");
     }
 }
 
