@@ -4,12 +4,14 @@ project(penetrator)
 set(SOURCE_FILES
   src/main.cpp
   src/keyboard.cpp
+  src/mouse.cpp
   src/uinput.cpp
   src/uud.cpp
 )
 
 set(HEADER_FILES
   src/keyboard.hpp
+  src/mouse.hpp
   src/uinput.hpp
   src/uud.hpp
 )
