@@ -4,6 +4,8 @@
 #include <string>
 #include <linux/uinput.h>
 
+/** uinput_user_dev structure wrapper.
+ */
 class Uud
 {
 public:
