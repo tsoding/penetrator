@@ -1,3 +1,4 @@
+[![Tsoding](https://img.shields.io/badge/twitch.tv-tsoding-purple?logo=twitch&style=for-the-badge)](https://www.twitch.tv/tsoding)
 # Penetrator
 
 A simple program for injecting Linux events via [UInput].
